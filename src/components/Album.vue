@@ -1,13 +1,22 @@
 <template>
 <div>
-  <div class="row">
-    <p>Some text</p>
+  <div class="row my-3 ">
+    <h1 class='title col'>Flood 2010 <span class="font-italic">Park in Wloclawek</span></h1>
   </div>
+    <div class="btn-group mb-3" role="group">
+    <button class="btn btn-outline-warning" @click="prev">Previous</button> <button class="btn btn-outline-warning" @click="next">Next</button>
+  </div> 
   <div class="row">
-    <div class="polaroid pull-left">
-        <img src="@/assets/Photos/park1.jpg" />
+    <transition-group name='fade' tag='div'>
+    <div v-for="number in [currentNumber]" :key='number' class="polaroid">
+        <img :src="images[Math.abs(currentNumber) % images.length]" 
+        v-on:mouseover="stopRotation" 
+        v-on:mouseout="startRotation" 
+        /> 
     </div>
+    </transition-group>
   </div>
+ 
 </div>
 </template>
 
@@ -15,11 +24,37 @@
 
 export default {
   name: 'Album',
+  data() {
+    return {images: [ require('../assets/Photos/park1.jpg'),require('../assets/Photos/park2.jpg'),require('../assets/Photos/park3.jpg'),],
+    currentNumber: 0,
+    timer: null }
+  },
+  mounted: function () {
+    this.startRotation();
+  },
+  methods: {
+    startRotation: function () {
+      this.timer = setInterval(this.next, 3000);
+    },
+    stopRotation: function () {
+      clearTimeout(this.timer);
+      this.timer = null;
+    },
+    next: function () {
+      this.currentNumber += 1;
+    },
+    prev: function () {
+      this.currentNumber -= 1;
+    }
+  }
 }
 </script>
 
 <style scoped>
 
+.title {
+  color: #6f6949;
+}
 img {
     filter: sepia(90%) brightness(0.6) blur(2px);
     border: 1px solid #44422d;
@@ -34,10 +69,26 @@ img {
 	-moz-box-shadow: 2px 2px 3px rgba(135, 139, 144, 0.4);
 	box-shadow: 2px 2px 3px black;
 }
-.pull-left.polaroid {
-	-webkit-transform: rotate(-9deg);
-	-moz-transform: rotate(-9deg);
-	transform: rotate(-9deg);
+.fade-enter-active, .fade-leave-active {
+ transition: all 0.8s ease;
+ overflow: hidden;
+ visibility: visible;
+ opacity: 1;
+ position: absolute;
+}
+.fade-enter, .fade-leave-to {
+ opacity: 0;
+ visibility: hidden;
+}
+.btn-outline-warning, .btn-outline-warning:hover, .btn-outline-warning:active, .btn-outline-warning:visited {
+    background-color: #6f6949 !important;
+    border-color: black !important;
+    color: #44422d !important;
+    box-shadow: none !important;
+}
+.btn-outline-warning:hover {
+  color: black !important;
+  box-shadow: none !important;
 }
 
 </style>
