@@ -16,6 +16,18 @@ export default {
 </script>
 
 <style>
-@import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";
+
+html {
+    height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(#44422d, black);
+  
+  background-repeat: no-repeat;
+}
 
 </style>
