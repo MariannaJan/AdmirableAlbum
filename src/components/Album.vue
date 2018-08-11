@@ -25,7 +25,12 @@
 export default {
   name: 'Album',
   data() {
-    return {images: [ require('../assets/Photos/park1.jpg'),require('../assets/Photos/park2.jpg'),require('../assets/Photos/park3.jpg'),],
+    return {images: [ require('../assets/Photos/park1.jpg'),require('../assets/Photos/park2.jpg'),require('../assets/Photos/park3.jpg'),
+                      require('../assets/Photos/park4.jpg'),require('../assets/Photos/park5.jpg'),require('../assets/Photos/park6.jpg'),
+                      require('../assets/Photos/park7.jpg'),require('../assets/Photos/park8.jpg'),require('../assets/Photos/park9.jpg'),
+                      require('../assets/Photos/park10.jpg'),require('../assets/Photos/park11.jpg'),require('../assets/Photos/park12.jpg'),
+                      require('../assets/Photos/park13.jpg'),require('../assets/Photos/park14.jpg'),require('../assets/Photos/park15.jpg'),,require('../assets/Photos/park16.jpg')
+                      ],
     currentNumber: 0,
     timer: null }
   },
@@ -40,8 +45,8 @@ export default {
       clearTimeout(this.timer);
       this.timer = null;
     },
-    next: function () {
-      this.currentNumber += 1;
+    next: function () {    
+      this.currentNumber += 1;      
     },
     prev: function () {
       this.currentNumber -= 1;
@@ -69,17 +74,6 @@ img {
 	-moz-box-shadow: 2px 2px 3px rgba(135, 139, 144, 0.4);
 	box-shadow: 2px 2px 3px black;
 }
-.fade-enter-active, .fade-leave-active {
- transition: all 0.8s ease;
- overflow: hidden;
- visibility: visible;
- opacity: 1;
- position: absolute;
-}
-.fade-enter, .fade-leave-to {
- opacity: 0;
- visibility: hidden;
-}
 .btn-outline-warning, .btn-outline-warning:hover, .btn-outline-warning:active, .btn-outline-warning:visited {
     background-color: #6f6949 !important;
     border-color: black !important;
@@ -90,5 +84,28 @@ img {
   color: black !important;
   box-shadow: none !important;
 }
+.fade-enter-active, .fade-leave-active {
+ transition: all 1.8s ease;
+ overflow: hidden;
+ visibility: visible;
+ opacity: 1;
+ position: absolute;
+ }
+ 
+.fade-leave-active {
+    transform: scale(.1) rotateZ(-90deg);
+    -moz-transform: scale(.1) rotateZ(-90deg);
+    -webkit-transform: scale(.1) rotateZ(-90deg);
+    -o-transform: scale(.1) rotateZ(-90deg);
+    border-radius: 50%;
+}
+
+.fade-enter, .fade-leave-to {
+ opacity: 0;
+ visibility: hidden;
+
+
+}
+
 
 </style>
