@@ -21,7 +21,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'Album',
   data() {
@@ -29,7 +28,7 @@ export default {
                       require('../assets/Photos/park4.jpg'),require('../assets/Photos/park5.jpg'),require('../assets/Photos/park6.jpg'),
                       require('../assets/Photos/park7.jpg'),require('../assets/Photos/park8.jpg'),require('../assets/Photos/park9.jpg'),
                       require('../assets/Photos/park10.jpg'),require('../assets/Photos/park11.jpg'),require('../assets/Photos/park12.jpg'),
-                      require('../assets/Photos/park13.jpg'),require('../assets/Photos/park14.jpg'),require('../assets/Photos/park15.jpg'),,require('../assets/Photos/park16.jpg')
+                      require('../assets/Photos/park13.jpg'),require('../assets/Photos/park14.jpg'),require('../assets/Photos/park15.jpg'),require('../assets/Photos/park16.jpg')
                       ],
     currentNumber: 0,
     timer: null }
@@ -56,7 +55,6 @@ export default {
 </script>
 
 <style scoped>
-
 .title {
   color: #6f6949;
 }
@@ -99,13 +97,8 @@ img {
     -o-transform: scale(.1) rotateZ(-90deg);
     border-radius: 50%;
 }
-
 .fade-enter, .fade-leave-to {
  opacity: 0;
  visibility: hidden;
-
-
 }
-
-
 </style>
